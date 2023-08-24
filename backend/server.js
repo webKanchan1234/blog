@@ -2,7 +2,7 @@ const app=require("./app")
 const dotenv=require("dotenv")
 const databaseConnection = require("./config/database")
 const cloudinary=require("cloudinary")
-
+const PORT=5000
 
 // Handling Uncaught Exception
 process.on("uncaughtException", (err) => {
@@ -19,7 +19,7 @@ cloudinary.config({
   api_key: process.env.API_KEY,
   api_secret: process.env.API_SECRET, 
 });
-const server=app.listen(process.env.PORT,()=>{
+const server=app.listen(process.env.PORT || 5000,()=>{
     console.log(`Server is running on `,process.env.PORT)
 })
 
