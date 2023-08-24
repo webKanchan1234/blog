@@ -1,0 +1,38 @@
+.about{
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    margin: 3vmax 0;
+    padding:0 2vmax;
+    flex-wrap: wrap;
+}
+.about_left{
+    width: 30%;
+}
+.about_left .image{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.about_left img{
+    width: 90%;
+}
+.about_right{
+    width: 50%;
+}
+
+
+@media screen and (max-width:600px) {
+    .about{
+        display: block;
+    }
+    .about_left{
+        width: 100%;
+        margin-bottom: 2vmax;
+    }
+    .about_right{
+        width: 90%;
+        padding: 1vmax;
+        margin: auto;
+    }
+}

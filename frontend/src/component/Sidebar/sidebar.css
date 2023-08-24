@@ -1,0 +1,17 @@
+.sidebar{
+    width: 100%;
+}
+.sidebar_link{
+    width: 80%;
+    text-decoration: none;
+    color: black;
+    transition: 0.3s;
+}
+.sidebar_link:hover{
+    color: rgb(97, 97, 249);
+}
+.sidebar_link p{
+    width: 80%;
+    border-bottom: 1px solid rgb(204, 202, 202);
+    box-sizing: inherit;
+}

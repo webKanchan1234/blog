@@ -1,0 +1,13 @@
+.forget{
+    width: 100%;
+    min-height: 90vh;
+    background-color: aqua;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.forget_input_box{
+    padding: 2vmax;
+    width: 25%;
+    background-color: rgb(156, 172, 172);
+}

@@ -1,0 +1,25 @@
+.news_container{
+    width: 70%;
+    margin-top: 2vmax !important;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: auto;
+    flex-wrap: wrap;
+    /* background-color: aqua; */
+}
+.news_container_link{
+    width: 31%;
+    text-decoration: none;
+    margin: 0.5vmax;
+}
+
+
+@media screen and (max-width:600px) {
+    .news_container{
+        width: 95%;
+    }
+    .news_container_link{
+        width: 45%;
+    }
+}

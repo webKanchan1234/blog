@@ -1,0 +1,41 @@
+.dashboard{
+    width: 100%;
+}
+.dashboard_header_box{
+    width: 100%;
+    background-color: #6528F7;
+    padding: 0.5vmax 0vmax;
+}
+.dashboard_header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    color: white;
+    margin: auto;
+    font-weight: bold;
+}
+.dashboard_link{
+    text-decoration: none;
+    font-size: 20px;
+    color: white;
+}
+.dashboard_header p{
+    margin-bottom: 0px;
+    cursor: pointer;
+}
+.dasboard_home{
+    display: flex;
+    /* align-items: center; */
+    justify-content: center;
+    padding: 1vmax;
+}
+.dasboard_home_sidebar{
+    width: 20%;
+    /* border-right: 1px solid rgb(144, 144, 144); */
+    
+    margin: 1vmax;
+}
+.dashboard_post{
+    width: 80%;
+}

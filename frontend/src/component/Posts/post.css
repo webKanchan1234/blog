@@ -1,0 +1,9 @@
+#edit{
+    color: blue;
+    margin-right: 1vmax;
+    cursor: pointer;
+}
+#delete{
+    color: red;
+    cursor: pointer;
+}
