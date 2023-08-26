@@ -9,7 +9,7 @@ import { allPost } from '../../action/postAction';
 
 const Footer = () => {
     const dispatch = useDispatch();
-    const { loading, posts } = useSelector((state) => state.posts);
+    const { posts } = useSelector((state) => state.posts);
 
     useEffect(() => {
         dispatch(allPost());
