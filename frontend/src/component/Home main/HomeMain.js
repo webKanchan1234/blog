@@ -13,9 +13,10 @@ const HomeMain = () => {
   useEffect(() => {
     dispatch(allPost());
   }, [dispatch]);
-
+  
+  console.log(posts)
   const post=posts[posts.length-1]
-  // console.log(post?._id)
+  
 
   return (
     <Fragment>

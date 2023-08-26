@@ -14,14 +14,14 @@ import {
   POST_DETAILS_REQUEST,
   POST_DETAILS_SUCCESS,
 } from "../constant/postConstant";
+import {BASE_URL} from "../services/helper"
 
 export const allPost = () => async (dispatch) => {
   try {
     dispatch({ type: ALL_POST_REQUEST });
 
     // const { data } = await axios.get("http://localhost:5000/api/v1/posts");
-    const { data } = await axios.get("/api/v1/posts");
-    
+    const { data } = await axios.get(`/api/v1/posts`);
 
     dispatch({
       type: ALL_POST_SUCCESS,
