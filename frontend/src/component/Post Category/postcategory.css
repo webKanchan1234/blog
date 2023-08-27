@@ -27,11 +27,22 @@
 @media screen and (max-width:600px) {
     .post_category{
         flex-direction: column-reverse;
+        width: 100%;
     }
     .post_category_left{
         width: 100%;
     }
     .news_details_left_related_link{
         width: 95%;
+    }
+    
+    .post_category_right{
+        width: 95%;
+    }
+    #related_news{
+        width: 100%;
+    }
+    .latest_news_link{
+        width: 100%;
     }
 }
