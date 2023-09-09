@@ -40,7 +40,7 @@
     padding-left: 3vmax;
 }
 
-@media screen and (max-width:600px) {
+@media screen and (max-width:1200px) {
     .news_details{
         width: 95%;
         flex-direction: column-reverse;
@@ -48,6 +48,13 @@
     .news_details_left{
         width: 90%;
     }
+    .news_details_left h3{
+        font-size: 4vmax;
+    }
+    .news_details_left p{
+        font-size: 2.5vmax;
+    }
+    
     .news_details_left_related{
         width: 100%;
     }

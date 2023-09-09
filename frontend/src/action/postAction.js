@@ -14,7 +14,7 @@ import {
   POST_DETAILS_REQUEST,
   POST_DETAILS_SUCCESS,
 } from "../constant/postConstant";
-import {BASE_URL} from "../services/helper"
+// import { BASE_URL } from "../api/apiHelper";
 
 export const allPost = () => async (dispatch) => {
   try {
@@ -59,8 +59,8 @@ export const createPost = (formData)=>async (dispatch)=>{
   try {
     dispatch({type:ADD_POST_REQUEST})
     console.log(formData)
-    const config = { headers: { "Content-Type": "multipart/form-data" }}
-    const {data} =await axios.post(`/api/v1/post`,formData,config)
+    // const config = { headers: { "Content-Type": "multipart/form-data" },withCredentials:true}
+    const {data} =await axios.post(`/api/v1/post`,formData)
     dispatch({
       type:ADD_POST_SUCCESS,
       payload:data

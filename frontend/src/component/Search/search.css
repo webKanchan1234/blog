@@ -52,7 +52,7 @@
 
 
 
-@media screen and (max-width:600px) {
+@media screen and (max-width:1200px) {
     .search{
         width: 90%;
         flex-direction: column-reverse;
