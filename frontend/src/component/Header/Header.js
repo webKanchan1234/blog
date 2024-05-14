@@ -40,7 +40,7 @@ function Header() {
           <Form className="d-flex">
             <Form.Control
               type="search"
-              placeholder="Search..."
+              placeholder="Search....."
               className="me-2"
               aria-label="Search"
               value={keyword}
