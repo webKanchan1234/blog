@@ -7,6 +7,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import "./header.css"
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import logo from "../../assets/logo1.png"
 
 function Header() {
   const navigate=useNavigate()
@@ -20,7 +21,9 @@ function Header() {
   return (
     <Navbar expand="lg" className="bg-body-tertiary">
       <Container >
-        <Navbar.Brand href="/">Blog</Navbar.Brand>
+        <Navbar.Brand href="/">
+        <img src={logo} id='logo' alt='logo'/>
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <Nav
@@ -40,7 +43,7 @@ function Header() {
           <Form className="d-flex">
             <Form.Control
               type="search"
-              placeholder="Search....."
+              placeholder="Search..."
               className="me-2"
               aria-label="Search"
               value={keyword}

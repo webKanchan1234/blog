@@ -6,13 +6,13 @@ import { useNavigate } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
 import { loginUser } from "../../action/userAction";
 import { Link } from "react-router-dom"
-import {toast} from "react-toastify"
+import { toast } from "react-toastify"
 import Loader from "../Loader/Loader"
 import MetaData from "../MetaData";
 
 const Login = () => {
   const navigate = useNavigate()
-  const { loading,error, isAuthenticated, user } = useSelector((state) => state.user)
+  const { loading, error, isAuthenticated, user } = useSelector((state) => state.user)
   const dispatch = useDispatch()
 
   const [email, setEmail] = useState("")
@@ -35,37 +35,47 @@ const Login = () => {
       toast.success("Loggin successfully")
       navigate("/user/me")
     }
-    if(error){
+    if (error) {
       toast.error(error)
     }
-  }, [isAuthenticated,error, navigate])
+  }, [isAuthenticated, error, navigate])
 
   return (
     <Fragment>
       <MetaData title="Signin" />
       {loading ? (
-        <Loader/>
+        <Loader />
       ) : (
         <div className="login_container">
-        <div className="login_box">
-  
-        <form action="" onSubmit={handleSubmit}>
+          <div className="login_box">
+
+            <form action="" id="login_form" onSubmit={handleSubmit}>
+              <h3 id="log_title">Login</h3>
               <div className="username">
-                <PersonIcon className="avatar" />
-                <input type="text" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                <label htmlFor="">Username</label>
+                <div className="input_avt"><PersonIcon className="avatar" />
+
+                  <input type="text" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} ></input>
+                </div>
               </div>
               <div className="password">
-                <LockIcon className="password" />
-                <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
+                <label htmlFor="">Password</label>
+                <div className="input_avt"><LockIcon className="password" />
+                  <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} /></div>
               </div>
-              <input type="submit" value="Log In Now" className="btn_submit" /> <br/>
-              <Link to="/password/forget" id="login_link">Forget Password</Link>
-              <Link to="/admin/signup" id="login_link">Register</Link>
+              <div >
+                <Link to="/password/forget" id="forget" >Forget Password?</Link>
+              </div>
+              <input type="submit" value="Login" className="btn_submit" /> <br />
+              
+              <Link to="/admin/signup" style={{ textDecoration: "none" }}><div id="login_link">
+                Register
+              </div></Link>
             </form>
-          
+
+          </div>
+
         </div>
-  
-      </div>
       )}
     </Fragment>
   );

@@ -29,7 +29,6 @@ app.use("*",cors({
 }))
 
 
-
 app.use("/api/v1",post)
 app.use("/api/v1",user)
 

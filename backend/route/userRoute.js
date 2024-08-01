@@ -10,12 +10,12 @@ router.get("/users/logout",logoutUser)
 router.post("/password/forget",forgotPassword)
 router.put("/password/reset/:token",resetPassword);
 router.post("/contact-us",contactUs);
-router.get("/users",isAuthenticated,isAuthorizedRoles("admin"),allUsers)
+router.get("/users",isAuthenticated,isAuthorizedRoles("admin","administrator"),allUsers)
 router.get("/user/me",isAuthenticated,userDetails)
 router.get("/users/:id",isAuthenticated,getSingleUser)
 router.put("/users/:id",isAuthenticated,updateUserDetails)
 router.put("/password/update",isAuthenticated,updatePassword)
-router.delete("/users/:id",isAuthenticated,isAuthorizedRoles("admin"),deleteUser)
+router.delete("/users/:id",isAuthenticated,isAuthorizedRoles("administrator"),deleteUser)
 
 
 module.exports = router

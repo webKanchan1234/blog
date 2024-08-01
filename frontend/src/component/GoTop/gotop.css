@@ -1,0 +1,31 @@
+.gotop{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(62, 62, 226);
+    bottom: 1vmax;
+    right: 1vmax;
+    float: right;
+    z-index: 999;
+    position: fixed;
+    cursor: pointer;
+}
+#gotop{
+    font-size: 2vmax;
+}
+#gotop{
+    animation: gotop 1.2s linear infinite alternate-reverse;
+}
+
+@keyframes gotop{
+    0%{
+        transform: translateY(-0.5rem);
+    }
+    100%{
+        transform: translateY(0.5rem);
+    }
+}

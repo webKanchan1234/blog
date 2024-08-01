@@ -7,8 +7,8 @@ import { BASE_URL } from "../api/apiHelper"
 export const signupUser = (formData)=>async (dispatch)=>{
   try {
       dispatch({type:REGISTER_REQUEST})
-      const {data}=await axios.post(`/api/v1/users/login`,formData)
-      // const {data}=await axios.post(`/api/v1/users/signup`,formData)
+      // const {data}=await axios.post(`/api/v1/users/login`,formData)
+      const {data}=await axios.post(`/api/v1/users/signup`,formData)
       dispatch({
           type:REGISTER_SUCCESS,
           payload:data.user

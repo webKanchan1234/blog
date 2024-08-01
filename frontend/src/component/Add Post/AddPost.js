@@ -48,6 +48,8 @@ const AddPost = () => {
     }
   }
 
+  let categories=["celebrity","sports","cricket","technology","entertainment","recent","popular","electronics","mobile","watch","tv","laptop"]
+
   useEffect(() => {
     if (success) {
       toast.success("Post created successfully")
@@ -120,13 +122,14 @@ const AddPost = () => {
                     onChange={(e) => setCategory(e.target.value)}
                   >
                     <option>Category</option>
-                    <option value="celebrity">celebrity</option>
-                    <option value="sports">sports</option>
-                    <option value="cricket">cricket</option>
-                    <option value="technology">technology</option>
-                    <option value="entertainment">entertainment</option>
-                    <option value="recent">recent</option>
-                    <option value="popular">popular</option>
+                    {
+                      categories.map((cat)=>{
+                        return(
+                          <option value={cat}>{cat}</option>
+                        )
+                      })
+                    }
+                    
                   </Form.Select>
                 </Form.Group>
 

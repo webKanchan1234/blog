@@ -1,5 +1,6 @@
 .dashboard{
     width: 100%;
+    min-height: 60vh;
 }
 .dashboard_header_box{
     width: 100%;
@@ -37,5 +38,37 @@
     margin: 1vmax;
 }
 .dashboard_post{
-    width: 80%;
+    width: 90%;
+}
+
+.total{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5vmax;
+    margin: 0.5vmax;
+    width: 100%;
+    /* background-color: red; */
+}
+.box{
+    width: 22%;
+    height: 150px;
+    margin: 1vmax;
+    border-radius: 0.5vmax;
+    text-align: center;
+    padding: 0.5vmax 0;
+    color: white;
+}
+.total_post{
+    background-color: green;
+}
+.total_users{
+    background-color: rgb(211, 54, 54);
+}
+.total_message{
+    background-color: rgb(171, 22, 171);
+}
+.total_graph{
+    /* background-color: rgb(92, 142, 92); */
+    width: 15%;
 }

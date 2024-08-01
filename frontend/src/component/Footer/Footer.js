@@ -6,6 +6,7 @@ import TwitterIcon from '@mui/icons-material/Twitter';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import { useDispatch, useSelector } from "react-redux";
 import { allPost } from '../../action/postAction';
+import logo from "../../assets/logo.png"
 
 const Footer = () => {
     const dispatch = useDispatch();
@@ -21,8 +22,8 @@ const Footer = () => {
         <div className='footer_container'>
             <div className='footer'>
                 <div className="footer_box">
-                    <img src="https://images.unsplash.com/photo-1575936123452-b67c3203c357?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aW1hZ2V8ZW58MHx8MHx8fDA%3D&w=1000&q=80" alt="logo" />
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Pariatur consectetur, facere placeat sunt iure corporis aliquam molestias.</p>
+                    <img src={logo} alt="logo" />
+                    <p>Welcome to our blog. We are passionate storytellers, explorers, and enthusiasts dedicated to sharing our insights, experiences, and tips on travel, technology, electronics, celebrity, etc. Our blog is the best resource whether you're looking to read something enjoyable, gain some inspiration, or learn something new.</p>
                     {/* <div className="footer_icons">
                     <Link id='link'><LinkedInIcon/></Link>
                     <Link id='link'><TwitterIcon/></Link>

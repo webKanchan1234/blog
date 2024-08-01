@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect,useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import Sidebar from "../Sidebar/Sidebar";
 import Table from "react-bootstrap/Table";
 import EditIcon from "@mui/icons-material/Edit";
@@ -21,7 +21,8 @@ const Post = () => {
   const dispatch = useDispatch();
   const { isDeleted } = useSelector((state) => state.post)
   const { loading, posts } = useSelector((state) => state.posts);
-  
+  const { isAuthenticated, user } = useSelector((state) => state.user)
+
   const [postId, setPostId] = useState()
 
   const [show, setShow] = useState(false);
@@ -45,13 +46,13 @@ const Post = () => {
   useEffect(() => {
     if (isDeleted) {
       toast.success("Post deleted successfully")
-    }
+    } 
     dispatch(allPost());
-    
+
   }, [dispatch, isDeleted]);
 
-  
-  
+
+
 
   let id = 1
   return (
@@ -63,40 +64,62 @@ const Post = () => {
         </div>
         <Fragment>
           {loading ? (
-            <Loader/>
+            <Loader />
           ) : (
             <div className="dashboard_post">
-            <Table striped bordered hover>
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Title</th>
-                  <th>Subtitle</th>
-                  <th>Actions</th>
-                </tr>
-              </thead>
-              <tbody>
-                {posts &&
-                  posts.map((post) => {
-                    return (
-                      <tr>
-                        <td>{id++}</td>
-                        <td>{post.title.substr(0, 25)}</td>
-                        <td>{post.subtitle?.length > 50 ? post.subtitle.substr(0, 25) : post.subtitle}</td>
-                        <td colSpan={2}>
-                          <span id="edit" onClick={()=>handleShow(post._id)}>
-                            <EditIcon />
-                          </span>
-                          <span id="delete" onClick={() => delePost(post._id)}>
-                            <DeleteIcon />
-                          </span>
-                        </td>
-                      </tr>
-                    );
-                  })}
-              </tbody>
-            </Table>
-          </div>
+              <Table striped bordered hover>
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Title</th>
+                    <th>Subtitle</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                {
+                  user.role === "administrator" ? (<tbody>
+                    {posts &&
+                      posts.map((post) => {
+                        return (
+                          <tr>
+                            <td>{id++}</td>
+                            <td>{post.title.substr(0, 25)}</td>
+                            <td>{post.subtitle?.length > 50 ? post.subtitle.substr(0, 25) : post.subtitle}</td>
+                            <td colSpan={2}>
+                              <span id="edit" onClick={() => handleShow(post._id)}>
+                                <EditIcon />
+                              </span>
+                              <span id="delete" onClick={() => delePost(post._id)}>
+                                <DeleteIcon />
+                              </span>
+                            </td>
+                          </tr>
+                        );
+                      })}
+                  </tbody>) : (<tbody>
+                  {posts &&
+                    posts.map((post) => {
+                      return (
+                        <tr>
+                          <td>{id++}</td>
+                          <td>{post.title.substr(0, 25)}</td>
+                          <td>{post.subtitle?.length > 50 ? post.subtitle.substr(0, 25) : post.subtitle}</td>
+                          <td colSpan={2}>
+                            <span id="edit" onClick={() => handleShow(post._id)}>
+                              <EditIcon />
+                            </span>
+                            {/* <span id="delete" onClick={() => delePost(post._id)}>
+                              <DeleteIcon />
+                            </span> */}
+                          </td>
+                        </tr>
+                      );
+                    })}
+                </tbody>)
+                }
+                
+              </Table>
+            </div>
           )}
         </Fragment>
       </div>
@@ -107,7 +130,7 @@ const Post = () => {
           <Modal.Title>Update post</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <UpdatePost postId={postId}/>
+          <UpdatePost postId={postId} />
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>

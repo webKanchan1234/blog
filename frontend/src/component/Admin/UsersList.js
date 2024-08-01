@@ -6,12 +6,14 @@ import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useDispatch, useSelector } from "react-redux";
 import "../Posts/post.css"
+import "./userslist.css"
 import axios from "axios";
+// import { useAlert } from "react-alert";
 import { toast } from "react-toastify"
 import Button from 'react-bootstrap/Button';
 
 import Modal from 'react-bootstrap/Modal';
-import { allUsers, deleteUser } from "../../action/userAction";
+import { allUsers, clearErrors, deleteUser, loadUser } from "../../action/userAction";
 import UpdateUser from "./UpdateUser";
 
 
@@ -19,8 +21,11 @@ import UpdateUser from "./UpdateUser";
 
 const UsersList = () => {
   const dispatch = useDispatch();
+  // const alert = useAlert();
+  const {isAuthenticated,user} = useSelector((state)=>state.user)
+  
   const { isDeleted } = useSelector((state) => state.profile)
-  const { loading, users } = useSelector((state) => state.allUsers);
+  const { error,loading, users } = useSelector((state) => state.allUsers);
 //   const { post } = useSelector((state) => state.postDetails);
   // console.log(post)
   
@@ -41,10 +46,16 @@ const UsersList = () => {
   }
 
 
-
+  // useEffect(() => {
+  //   dispatch(loadUser())
+  // }, [dispatch])
 
 
   useEffect(() => {
+    if(error){
+      toast.error("Error")
+      dispatch(clearErrors())
+    }
     if (isDeleted) {
       toast.success("User deleted successfully")
     }
@@ -52,8 +63,7 @@ const UsersList = () => {
     
   }, [dispatch,isDeleted]);
 
-  
-  
+
 
   let id = 1
   return (
@@ -70,10 +80,33 @@ const UsersList = () => {
                 <th>Name</th>
                 <th>Email</th>
                 <th>Role</th>
-                <th>Actions</th>
+                {
+                  user.role==="administrator" ? <th>Actions</th> : ""
+                }
               </tr>
             </thead>
-            <tbody>
+            {
+              user.role==="administrator" ? (<tbody>
+                {users &&
+                  users.map((user) => {
+                    return (
+                      <tr>
+                        <td>{id++}</td>
+                        <td>{user.name}</td>
+                        <td>{user.email}</td>
+                        <td>{user.role}</td>
+                        <td colSpan={2}>
+                          <span id="edit" onClick={()=>handleShow(user._id)}>
+                            <EditIcon />
+                          </span>
+                          <span id="delete" onClick={() => delUser(user._id)}>
+                            <DeleteIcon />
+                          </span>
+                        </td>
+                      </tr>
+                    );
+                  })}
+              </tbody>) : (<tbody>
               {users &&
                 users.map((user) => {
                   return (
@@ -82,18 +115,19 @@ const UsersList = () => {
                       <td>{user.name}</td>
                       <td>{user.email}</td>
                       <td>{user.role}</td>
-                      <td colSpan={2}>
+                      {/* <td colSpan={2}>
                         <span id="edit" onClick={()=>handleShow(user._id)}>
                           <EditIcon />
                         </span>
                         <span id="delete" onClick={() => delUser(user._id)}>
                           <DeleteIcon />
                         </span>
-                      </td>
+                      </td> */}
                     </tr>
                   );
                 })}
-            </tbody>
+            </tbody>)
+            }
           </Table>
         </div>
       </div>

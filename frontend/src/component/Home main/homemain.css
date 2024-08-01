@@ -7,10 +7,14 @@
 }
 
 .home_main_left{
-    width: 46%;
+    width:55%;
+}
+#home_img{
+    width: 100% !important;
+    height: 450px !important;
 }
 .home_main_right{
-    width: 25%;
+    width: 20%;
     padding: 0.5vmax 2vmax;
 }
 .card_link{

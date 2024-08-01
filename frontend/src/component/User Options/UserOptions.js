@@ -23,7 +23,7 @@ const UserOptions = ({user}) => {
   ];
 
 // console.log(user)
-  if (user.role === "admin") {
+  if (user.role === "admin" || user.role === "administrator") {
     options.unshift({
       // icon: <DashboardIcon />,
       name: "Dashboard",

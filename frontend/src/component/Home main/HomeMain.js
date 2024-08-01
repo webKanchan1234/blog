@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Card from "react-bootstrap/Card";
 import { allPost } from "../../action/postAction";
 import MetaData from "../MetaData";
+import logo from "../../assets/logo.png"
 
 const HomeMain = () => {
   const dispatch = useDispatch();
@@ -13,52 +14,53 @@ const HomeMain = () => {
   useEffect(() => {
     dispatch(allPost());
   }, [dispatch]);
-  
+
   console.log(posts)
-  const post=posts[posts.length-1]
-  
+  const post = posts[posts.length - 1]
+
 
   return (
     <Fragment>
       <MetaData title={post?.title} />
       <div className="home_main">
-      <div className="home_main_left">
-        {post ? (<Link to={`/post/${post?._id}`} className="card_link">
-          <Card>
-            <Card.Img
-              variant="top"
-              src={post?.image?.url}
+        <div className="home_main_left">
+          {post ? (<Link to={`/post/${post?._id}`} className="card_link">
+            <Card>
+              <Card.Img
+                variant="top"
+                id="home_img"
+                src={post?.image?.url}
+              />
+              <Card.Body className="card_body">
+                <Card.Text style={{ color: "white" }}>
+                  {post?.title}
+                </Card.Text>
+              </Card.Body>
+            </Card>
+          </Link>) : ""}
+        </div>
+        <div className="home_main_right">
+          <div className="home_main_right_header">
+            <img
+              src={logo}
+              alt="latest"
             />
-            <Card.Body className="card_body">
-              <Card.Text style={{ color: "white" }}>
-                {post?.title}
-              </Card.Text>
-            </Card.Body>
-          </Card>
-        </Link>) : ""}
-      </div>
-      <div className="home_main_right">
-        <div className="home_main_right_header">
-          <img
-            src="https://cdn.mos.cms.futurecdn.net/KSyBSzdtzZZ9g575V8kYv6-970-80.jpg.webp"
-            alt="latest"
-          />
-          <p>Recent News</p>
-        </div>
-        <div className="latest_news">
-          {posts &&
-            posts.slice(0).reverse().map((post) => {
-              return (
-                <Link to={`/post/${post._id}`} className="latest_news_link">
-                  <p>
-                    {post.title.substr(0, 75)}
-                  </p>
-                </Link>
-              );
-            })}
+            <p>Recent News</p>
+          </div>
+          <div className="latest_news">
+            {posts &&
+              posts.slice(0).reverse().map((post) => {
+                return (
+                  <Link to={`/post/${post._id}`} className="latest_news_link">
+                    <p>
+                      {post.title.substr(0, 75)}
+                    </p>
+                  </Link>
+                );
+              })}
+          </div>
         </div>
       </div>
-    </div>
     </Fragment>
   );
 };

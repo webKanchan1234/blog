@@ -1,5 +1,5 @@
 .news_details{
-    width: 70%;
+    width: 75%;
     display: flex;
     justify-content: center;
     /* align-items: center; */
@@ -8,7 +8,7 @@
     flex-wrap: wrap !important;
 }
 .news_details_left{
-    width: 65%;
+    width: 70%;
 }
 .news_details_left img{
     width: 100%;
@@ -35,7 +35,7 @@
     text-decoration: none;
 }
 .news_details_right{
-    width: 35%;
+    width: 30%;
     margin-top: 6vmax;
     padding-left: 3vmax;
 }
@@ -47,6 +47,7 @@
     }
     .news_details_left{
         width: 90%;
+        margin: auto;
     }
     .news_details_left h3{
         font-size: 4vmax;

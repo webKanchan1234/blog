@@ -17,8 +17,9 @@ exports.isAuthenticated = catchAsyncError(async(req,res,next)=>{
 })
 
 exports.isAuthorizedRoles = (...roles)=>{
+  console.log("20",roles)
     return (req, res, next) => {
-        if (!roles.includes(req.user.role)) {
+        if (!roles.includes(req.user.role) || !roles.includes(req.user.role)) {
           return next(
             new ErrorHandler(
               `Role: ${req.user.role} is not allowed to access this resouce `,
@@ -29,4 +30,19 @@ exports.isAuthorizedRoles = (...roles)=>{
     
         next();
     };
+}
+
+exports.isAuthorizedAdministrator = (...roles)=>{
+  return (req, res, next) => {
+      if (!roles.includes(req.user.role)) {
+        return next(
+          new ErrorHandler(
+            `Role: ${req.user.role} is not allowed to access this resouce `,
+            403
+          )
+        );
+      }
+  
+      next();
+  };
 }

@@ -8,6 +8,9 @@
 }
 .about_left{
     width: 30%;
+    align-items: center;
+    justify-content: center;
+    padding-right: 2vmax;
 }
 .about_left .image{
     display: flex;
@@ -19,6 +22,10 @@
 }
 .about_right{
     width: 50%;
+    padding-left: 2vmax;
+}
+#desc_about{
+    float: left !important;
 }
 
 

@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { clearErrors, updatePassword } from '../../action/userAction';
 import { toast } from "react-toastify"
 import Loader from "../Loader/Loader"
+import "./profile.css"
 
 const Profile = () => {
   const dispatch = useDispatch()
@@ -87,6 +88,9 @@ const Profile = () => {
           </Modal>
         </Fragment>
       )}
+      <div className="profile_home">
+        profile
+      </div>
     </Fragment>
   )
 }

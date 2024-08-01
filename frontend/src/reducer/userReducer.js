@@ -189,7 +189,7 @@ export const profileReducer = (state={},action)=>{
       return{
         ...state,
         loading:false,
-        error:action.payload
+        error:action.payload.message
       }
     case CLEAR_ERROR:
       return{

@@ -8,6 +8,7 @@ import Loader from '../Loader/Loader'
 import {toast} from "react-toastify"
 import {useNavigate} from "react-router-dom"
 import MetaData from '../MetaData'
+import logo from "../../assets/logo.png"
 
 const Search = () => {
     const navigate = useNavigate()
@@ -46,7 +47,7 @@ const Search = () => {
                 <div className="search_right">
                 <div className="home_main_right_header">
           <img
-            src="https://cdn.mos.cms.futurecdn.net/KSyBSzdtzZZ9g575V8kYv6-970-80.jpg.webp"
+            src={logo}
             alt="latest"
           />
           <p>Recent News</p>

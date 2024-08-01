@@ -27,6 +27,7 @@ import Contact from "./component/Contact/Contact";
 import About from "./component/About/About";
 import Register from "./component/Login/Register";
 import UsersList from "./component/Admin/UsersList";
+import GoTop from "./component/GoTop/GoTop";
 
 
 function App() {
@@ -81,6 +82,7 @@ function App() {
           {/* <Route exact path="/admin/add-post" element={<AddPost />} /> */}
           {/* <Route exact path="/user/me" element={<Profile />} /> */}
         </Routes>
+        <GoTop/>
         <Footer/>
       </Router>
     </>
