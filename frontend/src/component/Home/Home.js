@@ -20,12 +20,15 @@ const Home = () => {
       {loading ? (
         <Loader/>
       ) : (
+        <>
+        <h2 id="top_news">Top news</h2>
         <div className="news_container">
         {posts &&
           posts.map((post) => {
             return <News post={post} />;
           })}
       </div>
+        </>
       )}
     </Fragment>
   );

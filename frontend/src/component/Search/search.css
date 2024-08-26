@@ -1,4 +1,4 @@
-.search{
+.search {
     width: 75%;
     margin-top: 4vmax !important;
     margin: auto;
@@ -6,66 +6,108 @@
     /* align-items: center; */
     justify-content: center;
 }
-.search_left{
-    width:70%;
+
+.search_left {
+    width: 70%;
     margin: 1vmax 2vmax;
     padding: 1vmax;
 }
+
 /* .search_link_div{
     width: 100%;
     
 } */
-.search_link{
-    width: 80% !important;
-    height: 130px;
-    margin-bottom: 1vmax;
-    text-decoration: none;
-    display: flex;
-    /* align-items: center; */
-    /* justify-content: center; */
-    transition: 0.4s;
-    border: 1px solid rgb(81, 80, 80);
+.search_link {
+    display: flex !important;
+    margin: 1vmax;
 }
-.search_link .search_title:hover{
+
+.inline-card {
+    display: flex !important;
+}
+
+/* .inline-card-img {
+    width: 100px;
+    height: 180px;
+} */
+.search_link .search_title:hover {
     color: rgb(65, 65, 220) !important;
 }
-.search_link img{
-    width: 30% !important;
-    height: 100% !important;
+
+.search_link img {
+    width: 30% ;
+    /* height: 100% !important; */
     margin-right: 1vmax;
+    aspect-ratio: 3/2;
 }
-#search_title{
+
+#search_title {
     color: black;
-    line-height:1.5vmax;
+    /* line-height:1.5vmax; */
     font-size: 1.5vmax;
 }
-#search_subtitle{
+
+#search_subtitle {
     margin-top: -5px;
     color: rgb(52, 51, 51);
     font-size: 1.1vmax;
     line-height: 1.2vmax;
 }
 
-.search_right{
+.search_right {
     width: 20%;
 }
 
 
 
 @media screen and (max-width:1200px) {
-    .search{
+    .search {
         width: 90%;
         flex-direction: column-reverse;
     }
-    .search_left{
+
+    .search_left {
         width: 100%;
         margin: 0;
     }
-    .search_right{
-        width: 90%;
-        
+
+    .search_link img {
+        width: 100%;
+        height: 100%;
     }
-    .search_link{
+
+    .search_right {
+        width: 90%;
+
+    }
+
+    .search_link {
         width: 100% !important;
+        height: 200px;
+        display: block;
+    }
+
+    #search_title {
+        font-size: 3vmax;
+        padding: 1vmax;
+    }
+
+    #search_subtitle {
+        margin-top: -2vmax;
+        font-size: 2vmax;
+        line-height: 2vmax;
+        padding: 1vmax;
+    }
+
+    .inline-card {
+        display: block !important;
+    }
+    .inline-card-img {
+        width:100%;
+        height: 100%;
+    }
+    .search_link img{
+        width: 100%;
+        height: 100%;
     }
 }

@@ -9,7 +9,7 @@ import Dashboard from "./component/Dashboard/Dashboard";
 import Post from "./component/Posts/Post";
 import AddPost from "./component/Add Post/AddPost";
 import { useEffect } from "react";
-import {useDispatch, useSelector} from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { loadUser, loginUser } from "./action/userAction";
 import ProtectedRoute from "./Protected Route/ProtectedRoute";
 import HomeMain from "./component/Home main/HomeMain";
@@ -17,7 +17,7 @@ import DashboardHeader from "./component/Dashboard/DashboardHeader";
 import Order from "./component/Order/Order";
 import UserOptions from "./component/User Options/UserOptions";
 import Profile from "./component/Profile/Profile";
-import {ToastContainer} from "react-toastify"
+import { ToastContainer } from "react-toastify"
 import Search from "./component/Search/Search";
 import NotFound from "./component/Not found/NotFound";
 import ForgetPassword from "./component/Forget/ForgetPassword";
@@ -28,63 +28,81 @@ import About from "./component/About/About";
 import Register from "./component/Login/Register";
 import UsersList from "./component/Admin/UsersList";
 import GoTop from "./component/GoTop/GoTop";
+import ProAbout from "./component/Profile/ProAbout";
+import ProBlog from "./component/Profile/ProBlog";
+import ProAddPost from "./component/Profile/ProAddPost";
+import VerificationMail from "./component/Login/VerificationMail";
+// import { ThemeProvider } from "./dark/themContext";
+import ProEdit from "./component/Profile/ProEdit";
 
 
 function App() {
   const dispatch = useDispatch()
-  const {loading,isAuthenticated,user} = useSelector((state)=>state.user)
+  const { loading, isAuthenticated, user } = useSelector((state) => state.user)
   useEffect(() => {
     dispatch(loadUser())
   }, [dispatch])
-  
+
   // console.log(user)
   return (
     <>
-      <Router>
-        <Header />
-        <ToastContainer position="top-right"/>
-        {isAuthenticated && <UserOptions user={user} />}
-        
-        <Routes>
-          <Route exact path="/" element={<Home />} />
-          <Route exact path="/post/:id" element={<NewsDetails />} />
-          <Route exact path="/posts/:category" element={<PostCategory />} />
-          <Route exact path="/search/posts/:keyword" element={<Search />} />
-          <Route exact path="/search/posts/" element={<Home />} />
-          <Route exact path="/admin/login" element={<Login />} />
-          <Route exact path="/admin/signup" element={<Register />} />
-          <Route exact path="/password/forget" element={<ForgetPassword />} />
-          <Route exact path="/password/reset/:token" element={<ResetPassword />} />
-          <Route exact path="/contact-us" element={<Contact />} />
-          <Route exact path="/about-us" element={<About />} />
-          <Route exact path="*" element={<NotFound />} />
+      {/* <ThemeProvider> */}
+        <Router>
+          <Header />
+          <ToastContainer position="top-right" />
+          {isAuthenticated && <UserOptions user={user} />}
 
-          <Route exact path="/check" element={
-            <ProtectedRoute isAuthenticated={isAuthenticated}>
-              <Order/>
-            </ProtectedRoute>
-          } />
-          <Route exact path="/user/me" element={
-            <ProtectedRoute isAuthenticated={isAuthenticated}>
-              <Profile />
-            </ProtectedRoute>
-          } />
+          <Routes>
+            <Route exact path="/" element={<Home />} />
+            <Route exact path="/post/:id" element={<NewsDetails />} />
+            <Route exact path="/posts/:category" element={<PostCategory />} />
+            <Route exact path="/search/posts/:keyword" element={<Search />} />
+            <Route exact path="/search/posts/" element={<Home />} />
+            <Route exact path="/admin/login" element={<Login />} />
+            <Route exact path="/admin/signup" element={<Register />} />
+            <Route exact path="/verify/:token" element={<VerificationMail />} />
+            <Route exact path="/password/forget" element={<ForgetPassword />} />
+            <Route exact path="/password/reset/:token" element={<ResetPassword />} />
+            <Route exact path="/contact-us" element={<Contact />} />
+            <Route exact path="/about-us" element={<About />} />
+            <Route exact path="*" element={<NotFound />} />
 
-          <Route element={<ProtectedRoute isAuthenticated={isAuthenticated} adminRoute={true} isAdmin={user?.role ? true : false}/>}>
-            <Route exact path="/admin/dashboard" element={<Dashboard />}/>
-            <Route exact path="/admin/add-post" element={<AddPost />} />
-            <Route exact path="/admin/posts" element={<Post />} />
-            <Route exact path="/admin/users" element={<UsersList />} />
-          </Route>
+            <Route exact path="/check" element={
+              <ProtectedRoute isAuthenticated={isAuthenticated}>
+                <Order />
+              </ProtectedRoute>
+            } />
+            <Route exact path="/user/me" element={
+              <ProtectedRoute isAuthenticated={isAuthenticated}>
+                <Profile />
+              </ProtectedRoute>
+            } />
 
-          {/* <Route exact path="/admin/dashboard" element={<Dashboard />} /> */}
-          {/* <Route exact path="/admin/posts" element={<Post />} /> */}
-          {/* <Route exact path="/admin/add-post" element={<AddPost />} /> */}
-          {/* <Route exact path="/user/me" element={<Profile />} /> */}
-        </Routes>
-        <GoTop/>
-        <Footer/>
-      </Router>
+            <Route element={<ProtectedRoute isAuthenticated={isAuthenticated} />}>
+              <Route exact path="/user/add-post" element={<ProAddPost />} />
+            </Route>
+            <Route element={<ProtectedRoute isAuthenticated={isAuthenticated} />}>
+              <Route exact path="/user/edit" element={<ProEdit />} />
+            </Route>
+            <Route element={<ProtectedRoute isAuthenticated={isAuthenticated} adminRoute={true} isAdmin={user?.role ? true : false} />}>
+              <Route exact path="/admin/dashboard" element={<Dashboard />} />
+              <Route exact path="/admin/add-post" element={<AddPost />} />
+              <Route exact path="/admin/posts" element={<Post />} />
+              <Route exact path="/admin/users" element={<UsersList />} />
+              <Route exact path="/user/about" element={<ProAbout />} />
+              <Route exact path="/user/blog" element={<ProBlog />} />
+
+            </Route>
+
+            {/* <Route exact path="/admin/dashboard" element={<Dashboard />} /> */}
+            {/* <Route exact path="/admin/posts" element={<Post />} /> */}
+            {/* <Route exact path="/admin/add-post" element={<AddPost />} /> */}
+            {/* <Route exact path="/user/me" element={<Profile />} /> */}
+          </Routes>
+          <GoTop />
+          <Footer />
+        </Router>
+      {/* </ThemeProvider> */}
     </>
   );
 }

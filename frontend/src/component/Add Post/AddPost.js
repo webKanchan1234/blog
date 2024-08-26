@@ -14,15 +14,18 @@ import MetaData from "../MetaData";
 const AddPost = () => {
   const dispatch = useDispatch()
   const { loading, success } = useSelector((state) => state.newPost)
+  const {isAuthenticated,user} = useSelector((state)=>state.user)
   const editor = useRef(null);
   const [title, setTitle] = useState("");
   const [subtitle, setSubtitle] = useState("");
   const [category, setCategory] = useState("");
   const [image, setImage] = useState("");
+  const [error, setError] = useState('');
   const [description, setDescription] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    // console.log(image)
     const formData = {
       title: title,
       subtitle: subtitle,
@@ -36,6 +39,14 @@ const AddPost = () => {
 
   const handleChange = (e) => {
     if (e.target.name === "image") {
+      const file = e.target.files[0];
+      const maxSize = 50 * 1024;
+      if (file.size > maxSize) {
+        setError('File size exceeds 50KB');
+        return;
+      }else{
+        setError('')
+      }
       const reader = new FileReader();
 
       reader.onload = () => {
@@ -56,6 +67,7 @@ const AddPost = () => {
       setCategory("")
       setDescription("")
       setTitle("")
+      setSubtitle("")
       setCategory("")
       setImage("")
     }
@@ -67,7 +79,7 @@ const AddPost = () => {
       <MetaData title="Add Post"/>
       <div className="dasboard_home">
         <div className="dasboard_home_sidebar">
-          <Sidebar />
+          {user.role==="administrator" ? <Sidebar /> : ""}
         </div>
         <div className="dashboard_post">
           <Form onSubmit={handleSubmit}>
@@ -102,6 +114,7 @@ const AddPost = () => {
                     accept="image/*"
                     onChange={handleChange}
                   />
+                  {error && <p style={{ color: 'red' }}>{error}</p>}
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                   <Form.Label>Description</Form.Label>
@@ -133,7 +146,11 @@ const AddPost = () => {
                   </Form.Select>
                 </Form.Group>
 
-                <Button variant="primary" type="submit">
+                <Button variant="primary" 
+                disabled={error || !title || !subtitle 
+                  || !description || !category}
+                
+                type="submit">
                   Submit
                 </Button>
               </Fragment>

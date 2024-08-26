@@ -11,13 +11,14 @@ import { signupUser } from "../../action/userAction";
 import MetaData from "../MetaData";
 
 const Register = () => {
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
   const dispatch = useDispatch()
-  const { loading, isAuthenticated, error } = useSelector((state) => state.user)
+  // const { loading, isAuthenticated, error,user } = useSelector((state) => state.user)
 
   const [name, setName] = useState("")
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
+  const [message, setMessage] = useState("")
 
   const formData = {
     name: name,
@@ -27,32 +28,21 @@ const Register = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log(formData)
+    // console.log(formData)
     dispatch(signupUser(formData))
+    setMessage("An email sent to your account. Please verify it.")
+    setEmail("")
+    setPassword("")
+    setName("")
   }
-
-  useEffect(() => {
-    if (isAuthenticated) {
-      toast.success("Login Successfully")
-      navigate("/")
-    }
-    if (error) {
-      toast.error(error)
-    }
-  }, [isAuthenticated, error, navigate])
-
-
 
   return (
     <Fragment>
       <MetaData title="Signup" />
-      {loading ? (
-        <Loader />
-      ) : (
         <div className="login_container">
           <div className="login_box">
 
-            <form action="" onSubmit={handleSubmit}>
+            <form action="" className="form" onSubmit={handleSubmit}>
               <h3 id="log_title">Register</h3>
               {/* <div className="username">
               <PersonIcon className="avatar" />
@@ -92,12 +82,13 @@ const Register = () => {
                 Sign IN
               </div></Link>
               {/* <Link to="/admin/login" id="login_link">Sign In</Link> */}
+              {message ? <p id="verify">{message}</p> :""}
             </form>
 
           </div>
 
         </div>
-      )}
+      
     </Fragment>
   );
 };

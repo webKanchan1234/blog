@@ -11,7 +11,7 @@ const sendEmail2 = async (options) => {
             pass: "quzhxcqfdoxrlagr",
         },
     });
-    console.log(options.email)
+    // console.log(options.email)
     const emailOptions = {
         to: "kanchn1551@gmail.com",
         from: `${options.email}`,

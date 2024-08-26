@@ -116,11 +116,65 @@
     color: white;
 }
 
-
-
+#verify{
+    text-align: center;
+    margin-top: 1vmax;
+    width: 100%;
+    padding: 0.5vmax;
+    font-size: 1.3vmax;
+    background-color: rgb(24, 134, 24);
+    color: white;
+}
+.verify-page{
+    width: 40%;
+    margin: auto ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+}
+.verify-page p{
+    font-weight: bold;
+    font-size: 2vmax;
+}
+#tick{
+    color: green;
+    font-size: 12vmax;
+    width: 100%;
+    text-align: center;
+}
+#veri-login{
+    text-align: center;
+    width: 20%;
+    margin: auto;
+    text-decoration: none;
+    background-color: rgb(45, 129, 45);
+    color: white;
+    padding: 0.3vmax 2vmax;
+    border-radius: 1vmax;
+}
 
 @media screen and (max-width:1200px) {
     .login_box {
-        width: 80%;
+        width: 90%;
+        padding: 2vmax;
+    }
+    #login_form{
+        width: 100%;
+    }
+    .username  input,.password input {
+        font-size: 5vmax;
+        /* margin: -1vmax 0; */
+        padding: 1vmax 0.5vmax;
+    }
+    form{
+        width: 90%;
+    }
+    #verify{
+        margin-top: 2vmax;
+        padding: 0.5vmax;
+        font-size: 3vmax;
+        background-color: rgb(24, 134, 24);
+        color: white;
     }
 }

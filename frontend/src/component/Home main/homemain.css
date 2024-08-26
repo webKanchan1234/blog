@@ -11,7 +11,9 @@
 }
 #home_img{
     width: 100% !important;
-    height: 450px !important;
+    /* height: 450px !important; */
+    aspect-ratio: 4/2;
+    
 }
 .home_main_right{
     width: 20%;
@@ -49,14 +51,13 @@
 }
 .latest_news{
     height: 320px;
-    overflow: auto;
-
+    overflow: scroll;
 }
 .latest_news_link p{
     margin-bottom: 0px;
     /* line-height: 1vmax; */
     border-bottom:  1px solid rgb(216, 213, 213);
-    color: black;
+    /* color: black; */
     font-weight: 500;
     transition: 0.3s;
 }
@@ -74,5 +75,9 @@
     }
     .home_main_right{
         display: none;
+    }
+    #home_img{
+        width: 100% !important;
+        height: 250px !important;
     }
 }

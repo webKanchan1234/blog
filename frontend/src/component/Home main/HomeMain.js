@@ -6,17 +6,33 @@ import Card from "react-bootstrap/Card";
 import { allPost } from "../../action/postAction";
 import MetaData from "../MetaData";
 import logo from "../../assets/logo.png"
+import ServerError from "../commonError/ServerError";
+import Loader from "../Loader/Loader";
 
 const HomeMain = () => {
   const dispatch = useDispatch();
-  const { loading, posts } = useSelector((state) => state.posts);
+  const { loading, posts, error } = useSelector((state) => state.posts);
 
   useEffect(() => {
     dispatch(allPost());
   }, [dispatch]);
 
-  console.log(posts)
-  const post = posts[posts.length - 1]
+  if (loading) {
+    return <Loader/>;
+  }
+
+  if (error) {
+    return <ServerError/>  // Display error message to the user
+  }
+
+  // if (!posts || posts.length === 0) {
+  //   return <p>No posts available</p>;
+  // }
+
+  // console.log(posts)
+  // const post = posts[posts.length - 1]
+  // Ensure posts is defined and has elements
+  const post = posts && posts.length > 0 ? posts[posts.length - 1] : null;
 
 
   return (

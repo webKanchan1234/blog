@@ -1,5 +1,5 @@
 .post_category{
-    width: 70%;
+    width: 80%;
     padding-top: 4vmax;
     margin: auto;
     display: flex;
@@ -9,18 +9,20 @@
     flex-wrap: wrap;
 }
 .post_category_left{
-    width: 70%;
+    /* background-color: aqua; */
+    width: 75%;
     display: flex;
-    align-items: center;
-    justify-content: space-around;
+    /* align-items: center; */
+    justify-content: center;
     flex-wrap: wrap;
 }
 .news_details_left_related_link{
-    margin-bottom: 1vmax;
+    margin: 1vmax;
+    width: 30%;
 }
 .post_category_right{
-    width: 30%;
-    padding-left: 3vmax;
+    width: 25%;
+    padding-left: 2vmax;
 }
 
 

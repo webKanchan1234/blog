@@ -64,8 +64,8 @@ const diffInDay = Math.floor(diffInHour / 24);
                
             </p>
             <p>{post.subtitle}</p>
-            <div className="news_details_left_icons"></div>
-            <img src={post.image?.url} style={{height:"500px"}} alt={post.title} />
+            {/* <div className="news_details_left_icons"></div> */}
+            <img src={post.image?.url}  alt={post.title} />
             
             <p dangerouslySetInnerHTML={{ __html: post.description }}></p>
 
@@ -78,7 +78,7 @@ const diffInDay = Math.floor(diffInHour / 24);
                       <Card>
                         <Card.Img
                           // variant="top"
-                          style={{ marginBottom: "0px", height:"300px" }}
+                          style={{ marginBottom: "0px", height:"220px" }}
                           src={post.image?.url}
                         />
                         <Card.Body className="card_body" style={{ padding: "5px" }}>

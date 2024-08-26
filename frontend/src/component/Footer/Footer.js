@@ -48,9 +48,9 @@ const Footer = () => {
                             .filter((cat) => cat.category === "celebrity")
                                 .map((post) => {
                                     return (
-                                        <>
+                                        <div key={post._id}>
                                         <Link id='link' to={`/post/${post._id}`}>{post.title.substr(0, 20)}</Link> <br/>
-                                        </>
+                                        </div>
                                     )
                                 })
                         }

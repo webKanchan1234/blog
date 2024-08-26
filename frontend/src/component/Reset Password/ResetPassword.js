@@ -2,7 +2,7 @@ import React, { Fragment, useEffect, useState } from 'react'
 import PersonIcon from "@mui/icons-material/Person";
 import {useParams,useNavigate} from "react-router-dom"
 import {useDispatch,useSelector} from "react-redux"
-import { resetPassword } from '../../action/userAction';
+import { loadUser, resetPassword } from '../../action/userAction';
 import {toast} from "react-toastify"
 import MetaData from '../MetaData';
 
@@ -14,6 +14,8 @@ const ResetPassword = () => {
     const [password, setPassword] = useState("")
     const [confirmPassword, setConfirmPassword] = useState("")
     // console.log(params)
+    // const {isAuthenticated,user} = useSelector((state)=>state.user)
+  
 
 
     const handleSubmit = (e)=>{
@@ -26,14 +28,15 @@ const ResetPassword = () => {
     }
 
     useEffect(() => {
+        dispatch(loadUser())
       if(success){
         toast.success("Password reset successfully")
-        navigate("/")
+        navigate("/user/me")
       }
       if(error){
         toast.error(error)
       }
-    }, [success,error])
+    }, [success,error, dispatch])
     
 
     return (
@@ -44,7 +47,7 @@ const ResetPassword = () => {
                 <form action="" onSubmit={handleSubmit}>
                     <div className="username">
                         <PersonIcon className="avatar" />
-                        <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
+                        <input type="password" placeholder="New Password" value={password} onChange={(e) => setPassword(e.target.value)} />
                     </div>
                     <div className="username">
                         <PersonIcon className="avatar" />

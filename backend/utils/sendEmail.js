@@ -4,11 +4,11 @@ const sendEmail = async (options) => {
     const transporter = nodeMailer.createTransport({
         service: 'gmail',
         host: "smtp.gmail.com",
-        port: 587,
-        secure: false, // upgrade later with STARTTLS
+        // port: 587,
+        // secure: false, // upgrade later with STARTTLS
         auth: {
-            user: "kanchankr15153795@gmail.com",
-            pass: "quzhxcqfdoxrlagr",
+            user: 'kanchankr15153795@gmail.com',
+            pass: 'afhhepakdbpbvxuu',
         },
     });
 

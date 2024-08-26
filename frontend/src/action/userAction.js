@@ -1,4 +1,4 @@
-import { ALL_USERS_FAIL, ALL_USERS_REQUEST, ALL_USERS_SUCCESS, CLEAR_ERROR, CONTACT_FAIL, CONTACT_REQUEST, CONTACT_SUCCESS, DELETE_USER_FAIL, DELETE_USER_REQUEST, DELETE_USER_SUCCESS, FORGOT_PASSWORD_FAIL, FORGOT_PASSWORD_REQUEST, FORGOT_PASSWORD_SUCCESS, LOAD_USER_FAIL, LOAD_USER_REQUEST, LOAD_USER_SUCCESS, LOGIN_FAIL, LOGIN_REQUEST, LOGIN_SUCCESS, LOGOUT_FAIL, LOGOUT_SUCCESS, REGISTER_FAIL, REGISTER_REQUEST, REGISTER_SUCCESS, RESET_PASSWORD_FAIL, RESET_PASSWORD_REQUEST, RESET_PASSWORD_SUCCESS, UPDATE_PASSWORD_FAIL, UPDATE_PASSWORD_REQUEST, UPDATE_PASSWORD_SUCCESS } from "../constant/userConstant"
+import { ALL_USERS_FAIL, ALL_USERS_REQUEST, ALL_USERS_SUCCESS, CLEAR_ERROR, CONTACT_FAIL, CONTACT_REQUEST, CONTACT_SUCCESS, DELETE_USER_FAIL, DELETE_USER_REQUEST, DELETE_USER_SUCCESS, FORGOT_PASSWORD_FAIL, FORGOT_PASSWORD_REQUEST, FORGOT_PASSWORD_SUCCESS, LOAD_USER_FAIL, LOAD_USER_REQUEST, LOAD_USER_SUCCESS, LOGIN_FAIL, LOGIN_REQUEST, LOGIN_SUCCESS, LOGOUT_FAIL, LOGOUT_SUCCESS, REGISTER_FAIL, REGISTER_REQUEST, REGISTER_SUCCESS, RESET_PASSWORD_FAIL, RESET_PASSWORD_REQUEST, RESET_PASSWORD_SUCCESS, UPDATE_PASSWORD_FAIL, UPDATE_PASSWORD_REQUEST, UPDATE_PASSWORD_SUCCESS, UPDATE_PROFILE_FAIL, UPDATE_PROFILE_REQUEST, UPDATE_PROFILE_SUCCESS } from "../constant/userConstant"
 import axios from "axios"
 import { BASE_URL } from "../api/apiHelper"
 
@@ -20,12 +20,32 @@ export const signupUser = (formData)=>async (dispatch)=>{
       })
   }
 }
+
+//verify
+export const verificationMail = (token)=>async (dispatch)=>{
+  try {
+      // dispatch({type:REGISTER_REQUEST})
+      // const {data}=await axios.post(`/api/v1/users/login`,formData)
+      const {data}=await axios.get(`/api/v1/verify/${token}`)
+      // console.log(data)
+      // dispatch({
+      //     type:REGISTER_SUCCESS,
+      //     payload:data.user
+      // })
+  } catch (error) {
+      // dispatch({
+      //     type:REGISTER_FAIL,
+      //     payload:error.response.data.message
+      // })
+  }
+}
 //login
 export const loginUser = (formData)=>async (dispatch)=>{
     try {
         dispatch({type:LOGIN_REQUEST})
         // const {data}=await axios.post("http://localhost:5000/api/v1/users/login",formData,)
         const {data}=await axios.post(`/api/v1/users/login`,formData)
+        // console.log(data)
         dispatch({
             type:LOGIN_SUCCESS,
             payload:data.user
@@ -64,7 +84,7 @@ export const logout = () => async (dispatch) => {
 
 //forget password
 export const forgetPassword = (email)=>async (dispatch)=>{
-  console.log(email)
+  // console.log(email)
   try {
     dispatch({type:FORGOT_PASSWORD_REQUEST})
     const {data} = await axios.post(`/api/v1/password/forget`,email)
@@ -133,13 +153,14 @@ export const deleteUser = (id) => async (dispatch) => {
   }
 };
 
-//update assword
+//update password
 export const updatePassword = (password) => async (dispatch) => {
   try {
     dispatch({ type: UPDATE_PASSWORD_REQUEST });
+    console.log(password)
 
     const { data } = await axios.put(`/api/v1/password/update`,password);
-
+    console.log(data)
     dispatch({ type: UPDATE_PASSWORD_SUCCESS, payload: data });
   } catch (error) {
     dispatch({
@@ -166,7 +187,24 @@ export const contactUs= (formData)=>async (dispatch)=>{
   }
 }
 
-
+// update profile
+export const updateProfile = (userData) => async (dispatch) => {
+  try {
+    // console.log("data")
+    dispatch({type:UPDATE_PROFILE_REQUEST})
+    const {data} = await axios.put(`/api/v1/users`,userData)
+    console.log(data)
+    dispatch({
+      type:UPDATE_PROFILE_SUCCESS,
+      payload:data
+    })
+  } catch (error) {
+    dispatch({
+      type:UPDATE_PROFILE_FAIL,
+      payload:error.response.data.message
+    })
+  }
+}
 // Clearing Errors
 export const clearErrors = () => async (dispatch) => {
   dispatch({ type: CLEAR_ERROR });

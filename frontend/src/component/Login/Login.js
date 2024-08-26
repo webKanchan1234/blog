@@ -12,7 +12,7 @@ import MetaData from "../MetaData";
 
 const Login = () => {
   const navigate = useNavigate()
-  const { loading, error, isAuthenticated, user } = useSelector((state) => state.user)
+  const { loading, error, isAuthenticated } = useSelector((state) => state.user)
   const dispatch = useDispatch()
 
   const [email, setEmail] = useState("")
@@ -27,7 +27,7 @@ const Login = () => {
     e.preventDefault()
     // console.log(formData)
     dispatch(loginUser(formData))
-    // navigate("/admin/dashboard")
+    navigate("/user/edit")
   }
 
   useEffect(() => {
@@ -35,10 +35,10 @@ const Login = () => {
       toast.success("Loggin successfully")
       navigate("/user/me")
     }
-    if (error) {
-      toast.error(error)
-    }
-  }, [isAuthenticated, error, navigate])
+    // if (error) {
+    //   toast.error(error)
+    // }
+  }, [isAuthenticated, navigate])
 
   return (
     <Fragment>
@@ -71,6 +71,7 @@ const Login = () => {
               <Link to="/admin/signup" style={{ textDecoration: "none" }}><div id="login_link">
                 Register
               </div></Link>
+              {/* {error ? <p id="verify">{error}</p> :""} */}
             </form>
 
           </div>

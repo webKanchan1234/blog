@@ -7,7 +7,7 @@ const cloudinary = require("cloudinary");
 //create post
 exports.createPost = catchAsyncError(async (req, res, next) => {
   const { title, subtitle, category, description } = req.body;
-
+  // console.log(req.body.image)
   const myCloud = await cloudinary.v2.uploader.upload(req.body.image, {
     folder: "blog/posts"
   });
@@ -45,14 +45,20 @@ exports.getSinglePost = catchAsyncError(async (req, res, next) => {
 exports.getAllPost = catchAsyncError(async (req, res, next) => {
   // const posts = await Post.find();
   // console.log(req.params.keyword)
-  const apiFeature = new ApiFeatures(Post.find(), req.params.keyword).search()
+  try {
+    const apiFeature = new ApiFeatures(Post.find(), req.params.keyword).search();
+    let posts = await apiFeature.query;
 
-let posts = await apiFeature.query;
-
-  res.status(200).json({
-    success: true,
-    posts,
-  });
+    res.status(200).json({
+      success: true,
+      posts,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: "Internal Server Error",
+    });
+  }
 });
 
 //update post
@@ -61,6 +67,7 @@ exports.updatePost = catchAsyncError(async (req, res, next) => {
   if (!post) {
     return next(new ErrorHandler("Post not found with this id: ", 400));
   }
+  
   post = await Post.findByIdAndUpdate(req.params.id, req.body, {
     new: true,
   });

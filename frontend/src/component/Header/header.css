@@ -1,6 +1,11 @@
 .bg-body-tertiary{
     border-bottom: 1px solid rgb(203, 201, 201);
     padding: 0.3vmax !important;
+    position: sticky !important;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 10;
 }
 .nav_link{
     font-weight: 500 !important;
@@ -13,4 +18,8 @@
 #logo{
     width: 150px;
     height: 38px;
+}
+
+.dark{
+    margin-left: 1vmax;
 }

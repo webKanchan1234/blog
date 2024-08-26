@@ -3,7 +3,8 @@
     color: white;
     padding: 1vmax 0vmax;
     margin-top: 1vmax;
-    /* top: 0vh; */
+    top: 20vh;
+    /* min-height: 90vh; */
     position: relative;
 }
 .footer{

@@ -10,6 +10,7 @@ const About = () => {
     return (
         <Fragment>
             <MetaData title="About Blog" />
+            <h3 id='about'>About Us</h3>
             <div className='about'>
                 <div className="about_left">
                     <div className="image">

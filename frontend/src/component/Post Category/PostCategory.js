@@ -38,7 +38,7 @@ const PostCategory = () => {
                         <Card.Img variant="top" src={post.image.url} />
                         <Card.Body
                           className="card_body"
-                          style={{ padding: "5px" }}
+                          // style={{ padding: "2px" }}
                         >
                           <Card.Text
                             style={{
@@ -57,6 +57,7 @@ const PostCategory = () => {
           </div>
           <div className="post_category_right">
             <h3 id="related_news">Related News</h3>
+            <div className="latest_news">
             {posts &&
               posts.map((post) => {
                 return (
@@ -67,6 +68,7 @@ const PostCategory = () => {
                   </Link>
                 );
               })}
+            </div>
           </div>
         </div>
 

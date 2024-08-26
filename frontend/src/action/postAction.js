@@ -22,15 +22,16 @@ export const allPost = () => async (dispatch) => {
 
     // const { data } = await axios.get("http://localhost:5000/api/v1/posts");
     const { data } = await axios.get(`/api/v1/posts`);
-
+    // console.log(data)
     dispatch({
       type: ALL_POST_SUCCESS,
       payload: data,
     });
   } catch (error) {
+    console.log(error)
     dispatch({
       type: ALL_POST_FAIL,
-      payload: error.response.data.message,
+      payload: error.response ? error.response.statusText : "Backend server is not reachable",
     });
   }
 };
@@ -58,7 +59,7 @@ export const postDetails = (id)=>async (dispatch)=>{
 export const createPost = (formData)=>async (dispatch)=>{
   try {
     dispatch({type:ADD_POST_REQUEST})
-    console.log(formData)
+    // console.log(formData)
     // const config = { headers: { "Content-Type": "multipart/form-data" },withCredentials:true}
     const {data} =await axios.post(`/api/v1/post`,formData)
     dispatch({

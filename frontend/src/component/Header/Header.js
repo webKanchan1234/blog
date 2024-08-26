@@ -8,11 +8,18 @@ import "./header.css"
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import logo from "../../assets/logo1.png"
+// import { useTheme } from '../../dark/themContext';
+// import DarkModeToggle from "react-dark-mode-toggle";
 
 function Header() {
-  const navigate=useNavigate()
+
+  const navigate = useNavigate()
   const [keyword, setKeyword] = useState("")
-  const searchPost=(e)=>{
+  // const { theme, toggleTheme } = useTheme()
+
+
+
+  const searchPost = (e) => {
     // console.log(keyword)
     e.preventDefault()
     navigate(`/search/posts/${keyword}`)
@@ -22,7 +29,7 @@ function Header() {
     <Navbar expand="lg" className="bg-body-tertiary">
       <Container >
         <Navbar.Brand href="/">
-        <img src={logo} id='logo' alt='logo'/>
+          <img src={logo} id='logo' alt='logo' />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
@@ -37,8 +44,8 @@ function Header() {
             <Nav.Link href="/posts/entertainment" className='nav_link'>Entertainment</Nav.Link>
             <Nav.Link href="/posts/technology" className='nav_link'>Technology</Nav.Link>
             <Nav.Link href="/posts/cricket" className='nav_link'>Cricket</Nav.Link>
-            
-            
+
+
           </Nav>
           <Form className="d-flex">
             <Form.Control
@@ -47,10 +54,17 @@ function Header() {
               className="me-2"
               aria-label="Search"
               value={keyword}
-              onChange={(e)=>setKeyword(e.target.value)}
+              onChange={(e) => setKeyword(e.target.value)}
             />
             <Button type='submit' variant="outline-success" onClick={searchPost}>Search</Button>
           </Form>
+          {/* <div className="dark">
+            <DarkModeToggle
+              onChange={toggleTheme}
+              checked={theme === "dark"} 
+              size={80}
+            />
+          </div> */}
         </Navbar.Collapse>
       </Container>
     </Navbar>

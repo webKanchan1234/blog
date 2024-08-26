@@ -1,0 +1,18 @@
+.news_container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+#top_news{
+    text-align: center;
+    margin: auto;
+    margin-top: 2vmax;
+    text-decoration: underline;
+}
+
+@media screen and (max-width:1200px){
+    .news_container{
+        flex-wrap: wrap;
+    }
+}

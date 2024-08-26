@@ -1,3 +1,116 @@
-.profile_home{
-    min-height: 60vh;
+.profile_container{
+    background-image: url("https://cdn.create.vista.com/api/media/small/63267661/stock-photo-autumn-portrait-of-beautiful-girl");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    min-height: 80vh;
+    clip-path: polygon(0 0, 100% 0, 100% 76%, 0% 100%);
+    /* z-index: -1; */
+}
+.profile_box{
+    width: 60%;
+    margin: 0 auto;
+}
+.profile_box h3{
+    padding-top: 1vmax;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 0.5vmax;
+    text-align: center;
+    font-weight: bold;
+}
+.basic-navbar-nav1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5vmax;
+}
+#about_link{
+    text-decoration: none;
+    padding: 0.5vmax;
+    color: rgb(58, 57, 57);
+    transition: 0.8s;
+}
+#about_link:hover{
+    font-weight: bold;
+    text-decoration: underline;
+}
+.profile_avatar{
+    /* margin-top: 5vmax; */
+    background-color: white;
+    position: relative;
+    padding: 0.5vmax;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    margin: 15vmax auto;
+    width: 10vmax;
+    height: 10vmax;
+}
+.profile_avatar img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+/* CircleIcons.css */
+
+.circle-container {
+  position: absolute;
+  top: 3vmax;
+  left: 3vmax;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+}
+
+.circle-icon {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background: #fff;
+  text-decoration: none;
+  color: #000;
+  font-size: 24px;
+  transition: 0.5s;
+}
+.circle-icon:hover{
+    color: white;
+    background-color: rgb(68, 68, 237);
+}
+
+.circle-icon:nth-child(1) { transform: rotate(0deg) translate(120px) rotate(0deg); }
+.circle-icon:nth-child(2) { transform: rotate(60deg) translate(120px) rotate(-60deg); }
+.circle-icon:nth-child(3) { transform: rotate(120deg) translate(120px) rotate(-120deg); }
+.circle-icon:nth-child(4) { transform: rotate(180deg) translate(120px) rotate(-180deg); }
+.circle-icon:nth-child(5) { transform: rotate(240deg) translate(120px) rotate(-240deg); }
+.circle-icon:nth-child(6) { transform: rotate(300deg) translate(120px) rotate(-300deg); }
+
+
+.edit_form{
+    width: 48%;
+    margin: auto;
+    background-color: white;
+    padding: 1.5vmax;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.edit_form_name{
+    width: 28%;
+}
+.edit_form_name input{
+    width: 100%;
+}
+@media screen and (max-width:1200px){
+    .profile_box{
+        width: 90% !important;
+    }
 }

@@ -11,3 +11,14 @@
     width: 25%;
     background-color: rgb(156, 172, 172);
 }
+#forget_form{
+    width: 100%;
+}
+
+
+@media screen and (max-width:1200px){
+    .forget_input_box{
+        width: 85%;
+    }
+   
+}

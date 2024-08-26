@@ -1,46 +1,51 @@
 import React, { Fragment, useEffect, useState } from 'react'
 import PersonIcon from "@mui/icons-material/Person";
 import "./forget.css"
-import {useDispatch,useSelector} from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { forgetPassword } from '../../action/userAction';
-import {toast} from "react-toastify"
+import { toast } from "react-toastify"
 import MetaData from '../MetaData';
 
 const ForgetPassword = () => {
-    const dispatch = useDispatch()
-    const {message} = useSelector((state)=>state.forgetPassword)
-    const [email, setEmail] = useState("")
+  const dispatch = useDispatch()
+  const { error, message } = useSelector((state) => state.forgetPassword)
+  const [email, setEmail] = useState("")
 
-    const handleSubmit =(e) =>{
-        e.preventDefault()
-        const formData={
-          email:email
-        }
-        dispatch(forgetPassword(formData))
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    const formData = {
+      email: email
     }
+    dispatch(forgetPassword(formData))
+  }
 
-    useEffect(() => {
-      if(message){
-        toast.success(message)
-      }
-    }, [message])
-    
+  useEffect(() => {
+    if (error) {
+      toast.error(error)
+    }
+    if (message) {
+      toast.success(message)
+    }
+  }, [error, message])
+
 
   return (
     <Fragment>
       <MetaData title="Forget Password" />
       <div className='forget'>
         <div className="forget_input_box">
-        <form action="" onSubmit={handleSubmit}>
+          <form id='forget_form' action="" onSubmit={handleSubmit}>
             <div className="username">
-              <PersonIcon className="avatar" />
-              <input type="text" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+              <label htmlFor="">Username</label>
+              <div className="input_avt"><PersonIcon className="avatar" />
+
+                <input type="text" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+              </div>
             </div>
-           
-            <input type="submit" value="Send" className="btn_submit" /> <br/>
+            <input type="submit" value="Send" className="btn_submit" /> <br />
           </form>
         </div>
-    </div>
+      </div>
     </Fragment>
   )
 }

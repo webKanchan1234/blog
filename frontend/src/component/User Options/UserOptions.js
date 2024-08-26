@@ -18,8 +18,8 @@ const UserOptions = ({user}) => {
 
   const options = [
     {  name: "Profile", func: account },
-    {  name: "check", func: check },
-    {name: "Logout", func: logoutUser },
+    {  name: "Others", func: check },
+    // {name: "Logout", func: logoutUser },
   ];
 
 // console.log(user)
@@ -40,12 +40,12 @@ const UserOptions = ({user}) => {
   function account() {
     navigate("/user/me");
   }
-  function logoutUser() {
-    dispatch(logout());
-    toast.success("Logout Successfully");
-    navigate("/");
+  // function logoutUser() {
+  //   dispatch(logout());
+  //   toast.success("Logout Successfully");
+  //   navigate("/");
     
-  }
+  // }
 
 
   return (
@@ -56,9 +56,9 @@ const UserOptions = ({user}) => {
             Logo
           </Link>
           {options.map((item) => (
-          <>
-            <p onClick={item.func}>{item.name}</p>
-           </> 
+          <div key={item.name}>
+            <p onClick={item.func} key={item.name}>{item.name}</p>
+           </div> 
         ))}
         </div>
       </div>
